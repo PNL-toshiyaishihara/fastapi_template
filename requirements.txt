@@ -1,0 +1,16 @@
+#web framework
+fastapi
+
+# app server
+gunicorn
+uvicorn[standard]
+
+#database
+asyncpg
+sqlalchemy >= 2.0.0
+
+#utilities
+virtualenv
+debugpy
+
+#tests

@@ -1,0 +1,55 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    tmpfs:
+      - /tmp
+    container_name: FastAPI-Project
+    stdin_open: true
+    tty: true
+    networks:
+      - default
+      - micro-service-networks
+    volumes:
+      - .:/app:cached
+    ports:
+      - "8000:8000"
+      - "80:80"
+    env_file:
+      - .env
+    command: python app.py
+    environment:
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_ADDRESS: postgresql
+      DB_PORT: 5432
+      DB_NAME: postgres
+      DEPLOY_ENV: LOCAL
+      MODULE_NAME: be_com_master
+      CONFIGURATION_SETUP: develop
+      HISTFILE: /app/.bash_history
+    depends_on:
+      - postgresql
+
+  postgresql:
+    image: postgres:14
+    restart: always
+    volumes:
+      - .dockerdev/.psqlrc:/root/.psqlrc:ro
+      - ./postgres:/var/lib/postgresql/data
+      - ./log:/root/log:cached
+    environment:
+      PSQL_HISTFILE: /root/log/.psql_history
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+    healthcheck:
+      test: pg_isready -U postgres -h 127.0.0.1
+      interval: 5s
+
+networks:
+  micro-service-networks:
+    external: true

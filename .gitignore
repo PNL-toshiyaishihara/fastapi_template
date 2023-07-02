@@ -1,0 +1,32 @@
+__pycache__/
+.idea
+.DS_Store
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*,cover
+.hypothesis/
+venv/
+.venv/
+.python-version
+.pytest_cache
+
+# Pytest reports
+documents/assets
+documents/pytest_report.html
+
+# local DB
+postgres/
+
+# env file
+.env*
+!.env.sample
+
+# log
+log/
