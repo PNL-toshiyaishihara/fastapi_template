@@ -1,0 +1,11 @@
+TODO
+・ロギング最適化(LoggingMiddlewareの処理の見直し)
+・非同期実装対応単体テストの実装
+・db接続部分の確認
+・migration処理の実装
+・base部分のgit submodule化想定での実装
+・暗号化処理の実装
+・レスポンスをどう返すかの方針決めとexample作成
+・テンプレート作成後に確認用処理を作成(本リポジトリをfork)
+・github周りの整理
+・gunicorn×uvicorn周りのコンフィグ調査
