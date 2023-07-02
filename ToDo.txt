@@ -9,3 +9,4 @@ TODO
 ・テンプレート作成後に確認用処理を作成(本リポジトリをfork)
 ・github周りの整理
 ・gunicorn×uvicorn周りのコンフィグ調査
+・openAPI定義からの自動ルーティング方法の調査
